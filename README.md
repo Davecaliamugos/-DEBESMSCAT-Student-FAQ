@@ -1,5 +1,5 @@
 # 🚀 Live App
-[View Live App →](https://graph-visualization.streamlit.app/)
+[View Live App →](https://debesmscat-student-faq.streamlit.app/)
 # 🎓 DEBESMSCAT FAQ Chatbot
 
 # Streamlit App
