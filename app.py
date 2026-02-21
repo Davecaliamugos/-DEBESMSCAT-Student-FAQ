@@ -95,12 +95,35 @@ button[data-testid="stSidebarToggle"]:hover {
     .sidebar-tagline { font-size: 0.6rem !important; }
 }
 
-/* ── SIDEBAR ── */
+/* ── APP LAYOUT ── */
+.stApp {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.main .block-container {
+    padding-top: 0 !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    padding-bottom: 2rem !important;
+    margin-top: 0 !important;
+    max-width: 100% !important;
+}
+
+/* ── SIDEBAR BASE ── */
 section[data-testid="stSidebar"] {
     background: linear-gradient(180deg, #0a1e35 0%, #0f2642 50%, #0d3320 100%) !important;
-    box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+    box-shadow: 4px 0 24px rgba(0,0,0,0.35) !important;
+    min-width: 260px !important;
+    max-width: 300px !important;
+    width: 300px !important;
+    transition: all 0.3s ease !important;
 }
-section[data-testid="stSidebar"] > div { padding-top: 0 !important; }
+
+section[data-testid="stSidebar"] > div:first-child {
+    padding-top: 0 !important;
+    overflow-x: hidden !important;
+}
 
 .sidebar-header {
     background: linear-gradient(135deg, rgba(201,146,42,0.18), rgba(201,146,42,0.04));
@@ -175,9 +198,10 @@ section[data-testid="stSidebar"] .stSelectbox > div > div {
 .topbar {
     background: var(--navy);
     padding: 0.6rem 2rem;
-    margin: 0 -1.5rem 1.6rem;
+    margin: 0 -1.5rem 0;
     display: flex; align-items: center; gap: 0.9rem;
     border-bottom: 3px solid var(--gold);
+    margin-top: -1rem !important;
 }
 .topbar-logo { font-size: 1.3rem; }
 .topbar-title {
@@ -347,16 +371,27 @@ div[data-testid="stMain"] .stButton button:hover {
 hr { border-color: var(--border) !important; margin: 1rem 0 !important; }
 
 @media (max-width: 768px) {
-    .block-container { padding: 0 0.8rem 2rem !important; }
-    .topbar { padding: 0.5rem 1rem; margin: 0 -0.8rem 1.2rem; }
-    .hero { padding: 1.4rem 1.2rem; border-radius: 14px; }
-    .hero-stats { gap: 1.2rem; }
-    .bubble { max-width: 92%; font-size: 0.84rem; }
-    .chips-wrap { gap: 6px; }
-    .chip { font-size: 0.7rem; padding: 5px 11px; }
-    .input-card { padding: 0.9rem; }
+    /* Main container adjustments */
+    .main .block-container {
+        padding: 0 0.8rem 2rem !important;
+        margin-top: 0 !important;
+    }
     
-    /* Enhanced mobile responsiveness */
+    /* Simple mobile sidebar - WORKING APPROACH */
+    section[data-testid="stSidebar"] {
+        width: 280px !important;
+        min-width: 280px !important;
+        max-width: 85vw !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    /* Ensure sidebar is always accessible */
+    section[data-testid="stSidebar"] > div:first-child {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+    }
+    
+    /* Enhanced sidebar header for mobile */
     .sidebar-header {
         padding: 1rem 0.8rem 0.8rem !important;
     }
@@ -372,21 +407,16 @@ hr { border-color: var(--border) !important; margin: 1rem 0 !important; }
     
     /* Radio button improvements for mobile */
     section[data-testid="stSidebar"] .stRadio div[role="radiogroup"] {
-        gap: 8px !important;
+        gap: 6px !important;
+        display: flex !important;
+        flex-direction: column !important;
     }
     
     section[data-testid="stSidebar"] .stRadio div[role="radiogroup"] label {
         padding: 8px 10px !important;
         font-size: 0.7rem !important;
         line-height: 1.3 !important;
-    }
-    
-    section[data-testid="stSidebar"] .stRadio div[role="radiogroup"] div[data-testid="stRadio"] {
-        background: rgba(255,255,255,0.08) !important;
-        border: 1px solid rgba(255,255,255,0.15) !important;
-        border-radius: 6px !important;
-        padding: 8px 10px !important;
-        margin-bottom: 4px !important;
+        margin-bottom: 2px !important;
     }
     
     /* Selectbox improvements for mobile */
@@ -395,10 +425,25 @@ hr { border-color: var(--border) !important; margin: 1rem 0 !important; }
         padding: 8px !important;
     }
     
-    /* Input improvements for mobile */
+    /* Chips improvements for mobile */
+    .chips-wrap {
+        gap: 6px !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .chip {
+        font-size: 0.65rem !important;
+        padding: 4px 8px !important;
+    }
+    
+    /* Input card improvements for mobile */
     .input-card {
         padding: 0.8rem !important;
         margin-bottom: 0.8rem !important;
+    }
+    
+    .input-label {
+        font-size: 0.68rem !important;
     }
     
     div[data-testid="stTextInput"] input {
@@ -435,37 +480,13 @@ hr { border-color: var(--border) !important; margin: 1rem 0 !important; }
         font-size: 0.8rem !important;
     }
     
-    /* Top bar improvements for mobile */
-    .topbar {
-        padding: 0.4rem 1rem !important;
-        margin: 0 -0.8rem 1rem !important;
-        flex-wrap: wrap !important;
-        gap: 0.5rem !important;
-    }
-    
-    .topbar-logo {
-        font-size: 1.1rem !important;
-    }
-    
-    .topbar-title {
-        font-size: 0.9rem !important;
-        line-height: 1.2 !important;
-    }
-    
-    .topbar-sub {
-        font-size: 0.6rem !important;
-        display: none !important; /* Hide on mobile to save space */
-    }
-    
-    /* Chips improvements for mobile */
-    .chips-wrap {
-        gap: 4px !important;
-        margin-bottom: 1rem !important;
-    }
-    
-    .chip {
-        font-size: 0.65rem !important;
-        padding: 4px 8px !important;
+    /* Toggle button mobile positioning */
+    button[data-testid="stSidebarToggle"] {
+        top: 0.5rem !important;
+        left: 0.5rem !important;
+        min-width: 36px !important;
+        min-height: 36px !important;
+        padding: 0.25rem 0.4rem !important;
     }
 }
 
@@ -531,14 +552,10 @@ hr { border-color: var(--border) !important; margin: 1rem 0 !important; }
     .chips-wrap {
         margin-bottom: 0.8rem !important;
     }
-    
-    .chip {
-        font-size: 0.6rem !important;
-        padding: 3px 6px !important;
-    }
 }
 </style>
 """, unsafe_allow_html=True)
+
 
 # ═══════════════════════════════════════════════════════════════
 #  SESSION STATE
@@ -666,14 +683,6 @@ with st.sidebar:
 # ═══════════════════════════════════════════════════════════════
 #  MAIN CONTENT
 # ═══════════════════════════════════════════════════════════════
-
-st.markdown("""
-<div class="topbar">
-    <span class="topbar-logo">🎓</span>
-    <span class="topbar-title">DEBESMSCAT Student FAQ</span>
-    <span class="topbar-sub">Campus Guide · 24 / 7</span>
-</div>
-""", unsafe_allow_html=True)
 
 st.markdown("""
 <div class="chips-wrap">
