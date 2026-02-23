@@ -1,5 +1,5 @@
 # 🎓 DEBESMSCAT FAQ Chatbot
-## 🚀 Live App
+# 🚀 Live App
 [View Live App →](https://debesmscat-student-faq.streamlit.app/)
 # Streamlit App
 
