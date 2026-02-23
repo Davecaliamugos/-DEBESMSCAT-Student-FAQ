@@ -1,7 +1,6 @@
-# 🚀 Live App
-[View Live App →](https://debesmscat-student-faq.streamlit.app/)
 # 🎓 DEBESMSCAT FAQ Chatbot
-
+## 🚀 Live App
+[View Live App →](https://debesmscat-student-faq.streamlit.app/)
 # Streamlit App
 
 This Streamlit web application provides an intelligent FAQ assistant for DEBESMSCAT (Dr. Emilio B. Espinosa Sr. Memorial State College of Agriculture and Technology) students, featuring automatic responses and comprehensive campus information.
